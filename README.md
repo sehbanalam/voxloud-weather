@@ -1,60 +1,113 @@
-# VoxloudWeather
+# Voxloud Weather Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.13.
+Voxloud Homework Assignment: Weather Dashboard
 
-## Development server
+## Objective
 
-To start a local development server, run:
+Build a simple weather dashboard application that displays detailed weather information for multiple cities.
 
-```bash
-ng serve
+Deployed at: https://voxloud-weather.vercel.app/
 
-```
+---
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Features
 
-## Code scaffolding
+- **Add Cities:** Enter a city name and add it to your dashboard.
+- **Weather Cards:** Each city card displays:
+  - City name
+  - Current temperature
+  - Weather condition (e.g., sunny, rainy)
+  - Option to remove the city from the dashboard
+  - Option to see forecast
+- **Responsive Design:** Styled with CSS/Sass, works on all devices.
+- **Loading Indicator:** Shows while fetching weather data and forecast data.
+- **Error Handling:** Displays errors if a city is not found.
+- **RxJS:** Used for API requests and data management.
+- **Unit Tests:** Written with Jasmine/Karma for components and services.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Optional Features
 
-```bash
-ng generate component component-name
-```
+- **Persistence:** Cities are saved in service and persist across page refreshes.
+- **Forecast:** View the weather forecast for the next few hours for each city.
+- **Animations:** Smooth UI animations for a better user experience.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## Getting Started
 
-## Building
+### Prerequisites
 
-To build the project run:
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [Angular CLI](https://angular.dev/tools/cli) (v19+)
 
-```bash
-ng build
-```
+### Setup
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+1. **Clone the repository:**
 
-## Running unit tests
+   ```bash
+   git clone https://github.com/sehbanalam/voxloud-weather
+   cd voxloud-weather
+   ```
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+2. **Install dependencies:**
 
-```bash
-ng test
-```
+   ```bash
+   npm install
+   ```
 
-## Running end-to-end tests
+3. **API Key Setup:**
 
-For end-to-end (e2e) testing, run:
+   - This app uses the [OpenWeatherMap API](https://openweathermap.org/api).
+   - Register for a free API key.
+   - Create a file named `.env` in the project root and add:
+     ```
+     NG_APP_OPENWEATHER_API_KEY=your_api_key_here
+     ```
+   - Alternatively, update `environment.ts` with your API key.
 
-```bash
-ng e2e
-```
+4. **Start the development server:**
+   ```bash
+   ng serve
+   ```
+   Open [http://localhost:4200](http://localhost:4200) in your browser.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## Scripts
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- **Start Dev Server:**  
+  `ng serve`
+- **Build for Production:**  
+  `ng build`
+- **Run Unit Tests:**  
+  `ng test`
+- **Run End-to-End Tests:**  
+  `ng e2e`
+
+---
+
+## Project Structure
+
+- `src/app/` – Main Angular app code (components, services, etc.)
+- `src/environments/` – Environment configuration files
+
+---
+
+## Notes
+
+- **API Usage:** Be mindful of OpenWeatherMap's free tier limits.
+- **Testing:** Unit tests are located alongside their respective components/services.
+
+---
+
+## Resources
+
+- [Angular CLI Documentation](https://angular.dev/tools/cli)
+- [OpenWeatherMap API Docs](https://openweathermap.org/api)
+- [RxJS Documentation](https://rxjs.dev/)
+
+---
+
+## License
+
+This project is for educational purposes as part of the Voxloud Homework Assignment.

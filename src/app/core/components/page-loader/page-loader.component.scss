@@ -1,0 +1,42 @@
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loader-spinner {
+  width: 64px;
+  height: 64px;
+  border: 6px solid var(--primary);
+  border-top: 6px solid var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite, glow 1.5s ease-in-out infinite alternate;
+  box-shadow: 0 0 0 0 var(--accent);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 0 0 var(--accent);
+  }
+  100% {
+    box-shadow: 0 0 24px 8px var(--accent);
+  }
+}
+
+.loader-text {
+  margin-top: 1.5rem;
+  color: var(--heading);
+  font-size: var(--font-size-lg);
+  letter-spacing: 0.1em;
+  text-align: center;
+}

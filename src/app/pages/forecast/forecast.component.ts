@@ -3,14 +3,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ForecastData } from './interfaces/forecastData';
 import { CommonModule } from '@angular/common';
 import { ForecastService } from './services/forecast.service';
+import { PageLoaderComponent } from '../../core/components/page-loader/page-loader.component';
 
 @Component({
   selector: 'app-forecast',
   templateUrl: './forecast.component.html',
-  imports: [CommonModule],
+  imports: [CommonModule, PageLoaderComponent],
   styleUrls: ['./forecast.component.scss'],
 })
 export class ForecastComponent implements OnInit {
+  isLoading: boolean = true;
   cityName: string = '';
   forecastData: ForecastData | null = null;
 
@@ -29,8 +31,8 @@ export class ForecastComponent implements OnInit {
     this._forecastService
       .getForecastByCity(this.cityName)
       .subscribe((response) => {
-        console.log('Weather forecast:', response);
         this.forecastData = response;
+        this.isLoading = false;
       });
   }
 

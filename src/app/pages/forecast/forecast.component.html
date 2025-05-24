@@ -1,4 +1,5 @@
-<div class="forecast-container">
+<app-page-loader *ngIf="isLoading"></app-page-loader>
+<div *ngIf="!isLoading" class="forecast-container">
   <button class="back-btn" (click)="goToDashboard()" aria-label="Back">
     <svg
       width="28"
