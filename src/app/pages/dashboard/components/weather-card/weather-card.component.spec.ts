@@ -1,32 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { WeatherCardComponent } from './weather-card.component';
+import { Router } from '@angular/router';
 import { DashboardService } from '../../services/dashboard.service';
+import { WeatherCardComponent } from './weather-card.component';
 
 describe('WeatherCardComponent', () => {
   let component: WeatherCardComponent;
-  let fixture: ComponentFixture<WeatherCardComponent>;
+  let dashboardServiceSpy: jasmine.SpyObj<DashboardService>;
+  let routerSpy: jasmine.SpyObj<Router>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [WeatherCardComponent],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(WeatherCardComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeEach(() => {
+    dashboardServiceSpy = jasmine.createSpyObj('DashboardService', [
+      'removeLocation',
+    ]);
+    routerSpy = jasmine.createSpyObj('Router', ['navigate']);
+    component = new WeatherCardComponent(dashboardServiceSpy, routerSpy);
+    component.location = {
+      city: 'Rome',
+      condition: 'Sunny',
+      temperature: 25,
+    } as any;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('should call DashboardService.removeLocation with location when removeLocation is called', () => {
-    const dashboardService = TestBed.inject(DashboardService);
-    component.location = { city: 'Rome', temperature: 20, condition: 'Sunny' };
-    spyOn(dashboardService, 'removeLocation');
+  it('should call DashboardService.removeLocation with the location when removeLocation is called', () => {
     component.removeLocation();
-    expect(dashboardService.removeLocation).toHaveBeenCalledWith(
+    expect(dashboardServiceSpy.removeLocation).toHaveBeenCalledWith(
       component.location
     );
   });

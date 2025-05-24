@@ -32,7 +32,10 @@
     <h2>No Records Found</h2>
     <p>Try searching a city name in top right search bar...</p>
   </div>
-  <div *ngIf="selectedLocations?.length" class="cards-container">
+  <div
+    *ngIf="selectedLocations?.length && selectedLocations.length > 0"
+    class="cards-container"
+  >
     <app-weather-card
       *ngFor="let location of selectedLocations"
       [location]="location"

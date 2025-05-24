@@ -54,6 +54,10 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+    
+  }
+
   fetchLocations(query: string): Observable<string[]> {
     return new Observable<string[]>((observer) => {
       this.dashboardService.fetchLocations(query).subscribe({
