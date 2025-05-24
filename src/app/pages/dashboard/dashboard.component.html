@@ -28,7 +28,10 @@
       </mat-autocomplete>
     </mat-form-field>
   </div>
-  <div *ngIf="!selectedLocations?.length" class="no-records">
+  <div
+    *ngIf="!selectedLocations?.length || selectedLocations?.length == 0"
+    class="no-records"
+  >
     <h2>No Records Found</h2>
     <p>Try searching a city name in top right search bar...</p>
   </div>
