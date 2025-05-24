@@ -1,0 +1,72 @@
+<div class="weather-card">
+  <h2 class="city">{{ this.location.city }}</h2>
+  <div class="temp">{{ this.location.temperature }}° C</div>
+  <div class="condition">
+    <span class="weather-icon">
+      <ng-container [ngSwitch]="icon">
+        <svg *ngSwitchCase="'sunny'" width="36" height="36" viewBox="0 0 36 36">
+          <circle cx="18" cy="18" r="9" fill="#FFD93B" />
+          <g stroke="#FFD93B" stroke-width="2">
+            <line x1="18" y1="2" x2="18" y2="8" />
+            <line x1="18" y1="28" x2="18" y2="34" />
+            <line x1="2" y1="18" x2="8" y2="18" />
+            <line x1="28" y1="18" x2="34" y2="18" />
+            <line x1="6.6" y1="6.6" x2="11.3" y2="11.3" />
+            <line x1="24.7" y1="24.7" x2="29.4" y2="29.4" />
+            <line x1="6.6" y1="29.4" x2="11.3" y2="24.7" />
+            <line x1="24.7" y1="11.3" x2="29.4" y2="6.6" />
+          </g>
+        </svg>
+        <svg *ngSwitchCase="'rainy'" width="36" height="36" viewBox="0 0 36 36">
+          <ellipse cx="18" cy="18" rx="10" ry="7" fill="#b3c6e7" />
+          <ellipse cx="24" cy="20" rx="7" ry="5" fill="#8faee0" />
+          <line
+            x1="14"
+            y1="28"
+            x2="14"
+            y2="34"
+            stroke="#38e2ff"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <line
+            x1="18"
+            y1="28"
+            x2="18"
+            y2="34"
+            stroke="#38e2ff"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <line
+            x1="22"
+            y1="28"
+            x2="22"
+            y2="34"
+            stroke="#38e2ff"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+        <svg
+          *ngSwitchCase="'cloudy'"
+          width="36"
+          height="36"
+          viewBox="0 0 36 36"
+        >
+          <ellipse cx="18" cy="20" rx="10" ry="7" fill="#b3c6e7" />
+          <ellipse cx="24" cy="22" rx="7" ry="5" fill="#8faee0" />
+        </svg>
+        <svg *ngSwitchDefault width="36" height="36" viewBox="0 0 36 36">
+          <ellipse cx="18" cy="20" rx="10" ry="7" fill="#b3c6e7" />
+          <ellipse cx="24" cy="22" rx="7" ry="5" fill="#8faee0" />
+        </svg>
+      </ng-container>
+    </span>
+    <span class="condition-text">{{ this.location.condition }}</span>
+  </div>
+  <div class="button-row">
+    <button class="details-btn" (click)="goToForecast()">Forecast</button>
+    <button class="remove-btn" (click)="removeLocation()">Remove</button>
+  </div>
+</div>

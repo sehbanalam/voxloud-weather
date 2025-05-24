@@ -1,1 +1,155 @@
-/* You can add global styles to this file, and also import other style files */
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+
+html {
+  @include mat.theme((
+    color: (
+      theme-type: dark,
+      primary: mat.$orange-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}:root {
+  --primary: #403d39;
+  --accent: #eb5e28;
+  --warn: #b3261e;
+  --text: #ccc5b9;
+  --background: #252422;
+  --heading: #fffcf2;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-xxl: 2rem;
+
+  --border-radius: 6px;
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-size: 100%;
+  background: var(--background);
+  color: var(--text);
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--text);
+  font-size: var(--font-size-md);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading);
+  margin-top: 0;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: var(--font-size-xxl);
+}
+h2 {
+  font-size: var(--font-size-xl);
+}
+h3 {
+  font-size: var(--font-size-lg);
+}
+h4 {
+  font-size: 1.125rem;
+}
+h5 {
+  font-size: 1rem;
+}
+h6 {
+  font-size: 0.875rem;
+}
+
+p {
+  font-size: var(--font-size-md);
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+a:hover,
+a:focus {
+  color: var(--heading);
+  text-decoration: underline;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  border-radius: var(--border-radius);
+  border: none;
+  outline: none;
+  transition: background var(--transition), color var(--transition);
+}
+
+button {
+  background: var(--accent);
+  color: var(--heading);
+  padding: 0.5em 1.25em;
+  cursor: pointer;
+  border: none;
+}
+button:hover,
+button:focus {
+  background: var(--primary);
+  color: var(--accent);
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+ul,
+ol {
+  padding-left: 1.5em;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

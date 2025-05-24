@@ -1,0 +1,132 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.input-field {
+  transition: border-color 0.3s ease;
+  color: #ccc5b9 !important;
+
+  &::placeholder {
+    color: #ccc5b9 !important;
+  }
+
+  &:focus {
+    border-color: #eb5e28;
+    outline: none;
+  }
+}
+
+
+
+@media (max-width: 900px) {
+  .dashboard-container {
+    padding: 1rem;
+  }
+
+  .heading-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .cards-container {
+    gap: 0.7rem;
+  }
+}
+
+.no-records {
+  margin: 40px auto;
+  padding: 32px 24px;
+  max-width: 500px;
+  background: linear-gradient(135deg, #252422 60%, #252422 100%);
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(60, 80, 120, 0.12);
+  text-align: center;
+  animation: fadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.no-records h2 {
+  color: #eb5e28;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  animation: floatText 2.5s ease-in-out infinite alternate;
+}
+
+.no-records p {
+  color: #ccc5b9;
+  font-size: 1.1rem;
+  opacity: 0.85;
+  margin: 0;
+  animation: fadeIn 2s 0.5s backwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes floatText {
+  from {
+    transform: translateY(0);
+    text-shadow: 0 2px 8px rgba(60, 80, 120, 0.08);
+  }
+  to {
+    transform: translateY(-10px);
+    text-shadow: 0 8px 24px rgba(60, 80, 120, 0.16);
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-container {
+    padding: 0.5rem;
+  }
+
+  .heading-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+  }
+
+  .cards-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .input-field {
+    width: 100%;
+  }
+}

@@ -13,17 +13,21 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
-
-  it(`should have the 'voxloud-weather' title`, () => {
+  it('should have a Router injected', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('voxloud-weather');
+    expect(app['router']).toBeTruthy();
   });
 
-  it('should render title', () => {
+  it('should call ngOnInit without errors', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, voxloud-weather');
+    const app = fixture.componentInstance;
+    expect(() => app.ngOnInit()).not.toThrow();
+  });
+
+  it('should call ngOnDestroy without errors', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(() => app.ngOnDestroy()).not.toThrow();
   });
 });

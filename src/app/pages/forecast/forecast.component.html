@@ -1,0 +1,84 @@
+<div class="forecast-container">
+  <button class="back-btn" (click)="goToDashboard()" aria-label="Back">
+    <svg
+      width="28"
+      height="28"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      style="vertical-align: middle"
+    >
+      <line x1="19" y1="12" x2="5" y2="12" />
+      <polyline points="12 19 5 12 12 5" />
+    </svg>
+  </button>
+  <div class="location-info fade-in">
+    <h1 class="city">{{ forecastData?.location?.name }}</h1>
+    <p class="region-country">
+      {{ forecastData?.location?.region }},
+      {{ forecastData?.location?.country }}
+    </p>
+    <p class="localtime">Local Time: {{ forecastData?.location?.localtime }}</p>
+  </div>
+
+  <div class="current-weather slide-in">
+    <img
+      class="weather-icon"
+      [src]="forecastData?.current?.condition?.icon"
+      [alt]="forecastData?.current?.condition?.text"
+    />
+    <div class="current-details">
+      <h2>{{ forecastData?.current?.temp_c }}°C</h2>
+      <p>{{ forecastData?.current?.condition?.text }}</p>
+      <div class="current-meta">
+        <span>Humidity: {{ forecastData?.current?.humidity }}%</span>
+        <span
+          >Wind: {{ forecastData?.current?.wind_kph }} km/h
+          {{ forecastData?.current?.wind_dir }}</span
+        >
+        <span>Feels like: {{ forecastData?.current?.feelslike_c }}°C</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="forecast-days">
+    <div
+      class="forecast-day fade-in-up"
+      *ngFor="let day of forecastData?.forecast?.forecastday; let i = index"
+      [style.animationDelay]="i * 0.15 + 's'"
+    >
+      <div class="date">{{ day.date | date : "dd-MM-YYYY" }}</div>
+      <div class="day-summary">
+        <img [src]="day.day.condition.icon" [alt]="day.day.condition.text" />
+        <div>
+          <div class="temp-range">
+            <span class="max">Max: {{ day.day.maxtemp_c }}°C</span>
+            <span class="min">Min: {{ day.day.mintemp_c }}°C</span>
+          </div>
+          <div class="desc">{{ day.day.condition.text }}</div>
+        </div>
+      </div>
+      <div class="astro">
+        <span>🌅 {{ day.astro.sunrise }}</span>
+        <span>🌇 {{ day.astro.sunset }}</span>
+      </div>
+      <div class="hourly-scroll">
+        <div
+          class="hour-card fade-in"
+          *ngFor="let hour of day.hour; let j = index"
+          [style.animationDelay]="j * 0.05 + 's'"
+        >
+          <div>{{ hour.time | date : "HH:mm" }}</div>
+          <img [src]="hour.condition.icon" [alt]="hour.condition.text" />
+          <div>{{ hour.temp_c }}°C</div>
+          <div class="rain" *ngIf="hour.chance_of_rain > 0">
+            <span>🌧️ {{ hour.chance_of_rain }}%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="dashboard-container">
+  <div class="heading-row">
+    <h1>Weather Dashboard</h1>
+
+    <mat-form-field appearance="outline">
+      <input
+        class="input-field"
+        type="text"
+        matInput
+        placeholder="Enter Location"
+        [formControl]="locationControl"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let location of filteredLocations | async"
+          [value]="location"
+          (click)="onLocationSelected(location)"
+        >
+          {{ location }}
+        </mat-option>
+        <mat-option
+          *ngIf="(filteredLocations | async)?.length === 0"
+          [disabled]="true"
+        >
+          No results found
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  <div *ngIf="!selectedLocations?.length" class="no-records">
+    <h2>No Records Found</h2>
+    <p>Try searching a city name in top right search bar...</p>
+  </div>
+  <div *ngIf="selectedLocations?.length" class="cards-container">
+    <app-weather-card
+      *ngFor="let location of selectedLocations"
+      [location]="location"
+    ></app-weather-card>
+  </div>
+</div>

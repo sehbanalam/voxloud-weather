@@ -1,0 +1,145 @@
+.header {
+  display: flex;
+  flex-direction: column; 
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: linear-gradient(90deg, #403d39 0%, #252422 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+  animation: slideDown 0.8s cubic-bezier(0.77, 0, 0.18, 1) 0s 1;
+  gap: 0.5rem;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.logo-icon {
+  font-size: 1.7rem;
+  animation: rotateIcon 1.2s ease-in-out;
+}
+
+@keyframes rotateIcon {
+  from {
+    transform: rotate(-180deg) scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.3rem;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.nav-link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+
+.nav-link:hover {
+  color: #222;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  background: #222;
+}
+
+// Tablet and up
+@media (min-width: 600px) {
+  .header {
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem 2rem;
+    gap: 0;
+  }
+  .logo {
+    font-size: 1.7rem;
+    gap: 0.7rem;
+    justify-content: flex-start;
+  }
+  .logo-icon {
+    font-size: 2rem;
+  }
+  .nav-links {
+    gap: 2rem;
+    margin-top: 0;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+  .nav-link {
+    font-size: 1.1rem;
+  }
+  .header-search {
+    margin-top: 0;
+    .search-input {
+      width: 160px;
+      max-width: none;
+    }
+    .search-btn {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+// Desktop and up
+@media (min-width: 900px) {
+  .header {
+    padding: 1.2rem 4rem;
+    display: flex;
+    flex-direction: row;
+  }
+  .logo {
+    font-size: 2rem;
+  }
+  .logo-icon {
+    font-size: 2.3rem;
+  }
+  .nav-link {
+    font-size: 1.15rem;
+  }
+  .header-search .search-input {
+    width: 200px;
+  }
+}
